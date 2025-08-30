@@ -61,7 +61,7 @@ public class Student{
     @Override
 
     public String toString(){
-        return "Roll No:- "+ RollNo + "\nName:- " + name + "\n Course:- " +course + "\n Marks:- " + marks + "\n End......\n";
+        return "\nName:- " + name +"\nRoll No:- "+ RollNo +  "\n Course:- " +course +"\nCollege Id:- "+ collegeId + "\n Marks:- " + marks + "\n End......\n \n";
     }
 
 }
