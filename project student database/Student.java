@@ -1,9 +1,13 @@
+
+
 public class Student{
     private String name;
     private long RollNo;
     private int collegeId;
     private String course;
     private double  marks;
+    private int present =0;
+    private int totalDay = 0;
 
 
     //constructor to add detail of student;
@@ -36,6 +40,15 @@ public class Student{
         this.marks = marks;
     }
 
+    public void markpresent(){
+        present++;
+        totalDay++;
+    }
+
+    public void markAbsent(){
+        totalDay++;
+    }
+
 
 
     String getname(){
@@ -58,10 +71,25 @@ public class Student{
         return marks;
     }
 
+    int getpresent(){
+        return present;
+    }
+
+    int getpercent(){
+        if(totalDay==0){
+            System.out.println("Class not star yet");
+            return -1;
+        }
+        return(present*100)/totalDay;
+    }
+
+    int getTotalDay(){
+        return totalDay;
+    }
+
     @Override
 
     public String toString(){
-        return "\nName:- " + name +"\nRoll No:- "+ RollNo +  "\n Course:- " +course +"\nCollege Id:- "+ collegeId + "\n Marks:- " + marks + "\n End......\n \n";
+        return "\nName:- " + name +"\nRoll No:- "+ RollNo +  "\n Course:- " +course +"\nCollege Id:- "+ collegeId + "\nMarks:- " + marks +"\nAttendence:- "+ present+" in "+totalDay+ "\n End......\n \n";
     }
-
 }
