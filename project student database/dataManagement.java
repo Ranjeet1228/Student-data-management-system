@@ -12,17 +12,23 @@ public class dataManagement {
         int number = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < number; i++) {
+
             System.out.println("Enter the data of "+ (i+1) +" student:- ");
+
             System.out.print("Enter name:- ");
             String name = sc.nextLine();
+
             System.out.print("Enter RollNo:- ");
             long roll = sc.nextLong();
             sc.nextLine(); 
+
             System.out.print("Enter collegeId:- ");
             int colId = sc.nextInt();
             sc.nextLine();
+
             System.out.print("Enter course:- ");
             String course = sc.nextLine();
+
             System.out.print("Enter marks:- ");
             double marks = sc.nextDouble();
             sc.nextLine();
@@ -53,7 +59,6 @@ public class dataManagement {
                      System.out.println("Enter new name:- ");
                      sc.nextLine();
                      s.setname(sc.nextLine());
-                    //  sc.nextLine();
 
                      System.out.print("Enter new Roll number:- ");
                      s.setRollNo(sc.nextLong());
@@ -70,12 +75,14 @@ public class dataManagement {
                      System.out.print("Enter new marks of that student:- ");
                      s.setmarks(sc.nextDouble());
                      sc.nextLine();
+                     
                  }
                  System.out.println();
             }
 
             System.out.println("\nAny more modifation, Enter Y for yes and N for no:- ");
             String c;
+            
             do { 
                 c= sc.next();
                 if(c.equalsIgnoreCase("Y")){
@@ -88,7 +95,6 @@ public class dataManagement {
             } while(!c.equalsIgnoreCase("Y") && !c.equalsIgnoreCase("N"));
 
         }
-
     }
 
 
@@ -113,15 +119,12 @@ public class dataManagement {
             }
         }
         System.out.println("...... Error! not found.......");
-
-       
     }
 
 
     //4
     public  void search(Scanner sc){
-
-
+        
         if(st.isEmpty()){
             System.out.println("\nError!, No data found.");
             return;
@@ -141,6 +144,56 @@ public class dataManagement {
         System.out.println("\n NOT FOUND!");
     }
 
+    
+    //5
+    public void Attendence(Scanner sc){
 
+        if(st.isEmpty()){
+            System.out.println("No data exist in memory, kindly add some data");
+            return;
+        }
+
+        for(Student student: st){
+            System.out.println(student.getname() +":- ");
+            int num =sc.nextInt();
+            if(num==0) student.markAbsent();
+            if(num ==1) student.markpresent();
+        }
+    }
+
+
+    //6
+    public void totalPresent(Scanner sc){
+
+        System.out.print("Enter roll nums:- ");
+        long roll = sc.nextLong();
+        
+
+        for(Student student: st){
+
+            if(student.getRollNo()==roll){
+                System.out.println("Total present is "+ student.getpresent()+"in "+student.getTotalDay());
+                System.out.println("total percent = "+ student.getpercent());
+                return;
+            }
+        }
+        System.out.println("Invalid roll number\n NO such data found");
+    }
+
+
+
+    //7
+    void printAllData(){
+        System.out.println();
+        System.out.println("............");
+
+        System.out.println("total data of student:- ");
+
+        for(Student student: st){
+            System.out.println(student);     
+        }
+
+        System.out.println("...........");
+    }
     
 }
